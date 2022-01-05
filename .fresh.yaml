@@ -1,0 +1,21 @@
+version: 1 #
+root: . # Root folder where the project is
+main_path: # Module-style-path where main module is if not in root. example: example.com/name/cmd/
+tmp_path: ./tmp # Default temporary folder in which the executable file will be generated and run from
+build_name: runner-build # File name that will be built. exe will be automatically appended on Windows
+build_args: # Build args
+run_args: # Runtime args 
+build_log: runner-build-errors.log # Log file name for build errors
+valid_ext: .go, .tpl, .tmpl, .html # Extensions list for watching for changes
+no_rebuild_ext: .tpl, .tmpl, .html # Extensions list to ignore rebuilding
+ignore: # Ignore watching of both folders and individual files. Use * or ** and multiple lines for readability 
+  assets,
+  tmp, # Trailing comma will be auto-truncated. 
+build_delay: 600 # Nanoseconds to wait after change before attempting to rebuild.
+colors: true
+log_color_main: cyan
+log_color_build: yellow
+log_color_runner: green
+log_color_watcher: magenta
+log_color_app:
+debug: true # Set to false to make fresh less verbose
