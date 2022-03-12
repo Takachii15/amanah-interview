@@ -1,0 +1,35 @@
+version : '3.6'
+services:  
+  # Main service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kantin_backend
+    ports:
+      - "${USER_PORT}:${USER_PORT}"
+      - "${SELLER_PORT}:${SELLER_PORT}"
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_SECRET=${DB_SECRET}
+      - TOKEN_SECRET=${TOKEN_SECRET}
+      - USER_PORT=${USER_PORT}
+      - SELLER_PORT=${SELLER_PORT}
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTRES_USER=root
+      - POSTRES_PASSWORD=root
+      - POSTRES_DB=root
+
+    port:
+      - "5432:5432"
+    volumes:
+      - "/var/db/"

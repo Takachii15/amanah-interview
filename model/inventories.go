@@ -48,9 +48,3 @@ func GetAll() ([]Inventories, error) {
 	return items, result.Error
 }
 
-func (item *Inventories) PurchaseItem(id int, val int) error {
-	if err := config.DB.Model(&Inventories{}).Where("id = ?", id).Updates("stok", val).Error; err != nil {
-		return err
-	}
-	return nil
-}
